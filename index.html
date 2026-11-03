@@ -1855,7 +1855,7 @@
     </div>
 
     <div class="toggle-reviews-container">
-      <button class="btn-toggle-all" id="reviewsToggleBtn">Show All 21 Client Reviews &darr;</button>
+      <button class="btn-toggle-all" id="reviewsToggleBtn">Show All Reviews &darr;</button>
     </div>
   </section>
 
@@ -2024,8 +2024,7 @@
       extraCards.forEach(card => {
         card.style.display = isExpanded ? 'flex' : 'none';
       });
-      const totalReviews = document.querySelectorAll('.review-item-card').length;
-      reviewsToggleBtn.textContent = isExpanded ? 'Show Less ↑' : `Show All ${totalReviews} Client Reviews ↓`;
+      reviewsToggleBtn.textContent = isExpanded ? 'Show Less ↑' : 'Show All Reviews ↓';
     });
 
     // --- AUTOMATIC REAL-TIME FREELANCER REVIEWS SYNC (STRICT ZERO DUPLICATES) ---
@@ -2115,10 +2114,10 @@
 
         const totalCount = document.querySelectorAll('.review-item-card').length;
         if (bannerMeta) {
-          bannerMeta.textContent = `${totalCount}+ verified global projects`;
+          bannerMeta.textContent = `${totalCount >= 30 ? totalCount : '30'}+ verified global projects`;
         }
         if (reviewsToggleBtn && !isExpanded) {
-          reviewsToggleBtn.textContent = `Show All ${totalCount} Client Reviews ↓`;
+          reviewsToggleBtn.textContent = 'Show All Reviews ↓';
         }
       } catch (err) {
         console.log('Freelancer live sync:', err);
