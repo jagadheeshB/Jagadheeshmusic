@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jagadheesh &mdash; Music Producer & Film Composer</title>
+  <title>Jagadheesh - Music Producer & Film Composer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -474,8 +474,8 @@
     /* Floating Review Chip on Hero */
     .floating-star-chip {
       position: absolute;
-      bottom: -18px;
-      left: -15px;
+      top: 24px;
+      left: -28px;
       background: var(--bg-card);
       border: 1px solid var(--border-accent);
       border-radius: 12px;
@@ -1152,20 +1152,40 @@
       }
       .hero-card-wrap {
         order: -1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 8px;
       }
       .artist-frame {
         max-width: 290px;
+        width: 100%;
         margin: 0 auto;
       }
+      .artist-overlay-info {
+        padding: 16px 18px;
+      }
+      .artist-badge-name {
+        font-size: 26px;
+      }
+      .artist-badge-role {
+        font-size: 11px;
+      }
       .floating-star-chip {
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 10px 16px;
+        position: static;
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+        padding: 8px 18px;
+        margin-top: 14px;
         white-space: nowrap;
+        border-radius: 999px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08), 0 0 16px var(--gold-glow);
       }
       .chip-star-score {
-        font-size: 30px;
+        font-size: 28px;
       }
       .chip-star-text {
         font-size: 10px;
@@ -1359,7 +1379,7 @@
 
         <p class="hero-bio">
           Scoring full-length feature films, streaming series, and independent records. 
-          From cinematic orchestral themes to high-energy mixes &mdash; engineered with theatrical precision in <strong>Puducherry, India</strong>.
+          From cinematic orchestral themes to high-energy mixes - engineered with theatrical precision in <strong>Puducherry, India</strong>.
         </p>
 
         <!-- Live Sound Visualizer -->
@@ -1411,7 +1431,7 @@
     <div class="section-head">
       <div class="section-tagline"><span>&bull;</span> Original Compositions & Audio Production</div>
       <h2 class="section-heading">Music Composed & Produced</h2>
-      <p class="section-description">Original feature film background scores, streaming web series on Tentkotta, acclaimed short films, and indie releases &mdash; all music composed and produced by Jagadheesh.</p>
+      <p class="section-description">Original feature film background scores, streaming web series on Tentkotta, acclaimed short films, and indie releases - all music composed and produced by Jagadheesh.</p>
     </div>
 
     <div class="works-grid">
@@ -1429,7 +1449,7 @@
             <span class="genre-pill">ORIGINAL SCORE &bull; FEATURE FILM</span>
           </div>
           <h3 class="work-item-title">Agaadham Anukulam</h3>
-          <p class="work-item-desc">Full-length feature film original background score &mdash; composed, arranged, and produced by Jagadheesh for theatrical & Prime Video release.</p>
+          <p class="work-item-desc">Full-length feature film original background score - composed, arranged, and produced by Jagadheesh for theatrical & Prime Video release.</p>
           <a class="work-action-link" href="https://www.primevideo.com/detail/0NEIBDSVEUCCVA06544OGOFPQ1?ref_=atv_dp_share_cu_r" target="_blank" rel="noopener">
             Watch on Prime Video <span>&rarr;</span>
           </a>
@@ -1529,7 +1549,7 @@
             <span class="genre-pill">ORIGINAL SONG &bull; SPOTIFY</span>
           </div>
           <h3 class="work-item-title">Paisa Me Paramaathma</h3>
-          <p class="work-item-desc">Original single track composed, arranged, and produced by Jagadheesh &mdash; available on Spotify and major streaming platforms.</p>
+          <p class="work-item-desc">Original single track composed, arranged, and produced by Jagadheesh - available on Spotify and major streaming platforms.</p>
           <a class="work-action-link" href="https://open.spotify.com/track/4Htfgy08vNgoFjCrp9xzGl" target="_blank" rel="noopener">
             Listen on Spotify <span>&rarr;</span>
           </a>
@@ -1749,7 +1769,7 @@
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Custom Love-Themed Song Medley</div>
-          <p class="quote-content">&ldquo;A real pro &mdash; that you can trust.&rdquo;</p>
+          <p class="quote-content">&ldquo;A real pro - that you can trust.&rdquo;</p>
         </div>
         <div class="verified-tick">&check; Verified Freelancer Client</div>
       </div>
