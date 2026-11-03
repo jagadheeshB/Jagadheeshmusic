@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book A Song / Project &mdash; Jagadheesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- COLOR TOKENS (LIGHT DEFAULT & DARK) ---------- */
+    :root, [data-theme="light"] {
+      --bg: #f7f4ee;
+      --bg-card: #ffffff;
+      --bg-card-hover: #faf8f5;
+      --bg-surface: #ede8df;
+      --border: rgba(23, 23, 26, 0.1);
+      --border-accent: rgba(184, 114, 31, 0.4);
+      --text: #16171b;
+      --text-muted: #5a5e6a;
+      --text-dim: #7f8491;
+      --gold: #b8721f;
+      --gold-bright: #d97706;
+      --gold-glow: rgba(184, 114, 31, 0.2);
+      --red: #dc2626;
+      --green: #059669;
+      --cyan: #0284c7;
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      --card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --header-bg: rgba(247, 244, 238, 0.94);
+      --ticket-bg: #ffffff;
+      --viz-bg: #ece7dc;
+      --glow-top: radial-gradient(ellipse at 50% 0%, rgba(184, 114, 31, 0.12) 0%, transparent 65%);
+      --footer-bg: #111216;
+      --footer-text: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b0c10;
+      --bg-card: #12141a;
+      --bg-card-hover: #181b23;
+      --bg-surface: #191c24;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(217, 119, 6, 0.35);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --gold: #d97706;
+      --gold-bright: #f59e0b;
+      --gold-glow: rgba(217, 119, 6, 0.3);
+      --red: #ef4444;
+      --green: #10b981;
+      --cyan: #38bdf8;
+      --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      --card-shadow-hover: 0 10px 36px rgba(0, 0, 0, 0.6);
+      --header-bg: rgba(11, 12, 16, 0.92);
+      --ticket-bg: #141720;
+      --viz-bg: #161820;
+      --glow-top: radial-gradient(ellipse at 50% 0%, rgba(217, 119, 6, 0.15) 0%, transparent 65%);
+      --footer-bg: #07080a;
+      --footer-text: #ffffff;
+    }
+
+    :root {
+      --font-display: 'Bebas Neue', cursive, sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      width: 100%;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      overflow-x: hidden;
+      width: 100%;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Ambient Warm Studio Lighting */
+    .studio-glow-top {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 100%;
+      height: 650px;
+      background: var(--glow-top);
+      pointer-events: none;
+      z-index: 0;
+      transition: background 0.3s ease;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .mono { font-family: var(--font-mono); }
+
+    /* ---------- NAVBAR ---------- */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 6vw;
+      background: var(--header-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand-logo {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 0.05em;
+      color: var(--text);
+    }
+    .brand-logo span { color: var(--gold); }
+    
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+    .status-dot {
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--green);
+      animation: pulseGreen 1.8s infinite;
+    }
+    @keyframes pulseGreen {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    nav.desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    nav.desktop-nav a {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    nav.desktop-nav a:hover, nav.desktop-nav a.active { color: var(--gold); }
+
+    /* Header Theme Switcher Pill */
+    .theme-switch-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: var(--card-shadow);
+    }
+    .theme-switch-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    .nav-btn-home {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text) !important;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 11.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .nav-btn-home:hover {
+      border-color: var(--gold);
+      color: var(--gold) !important;
+    }
+
+    /* ---------- FLOATING SIDE THEME SWITCHER (RIGHT SIDE) ---------- */
+    .floating-side-theme {
+      position: fixed;
+      right: 24px;
+      bottom: 28px;
+      z-index: 999;
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: 999px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18), 0 0 15px var(--gold-glow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(10px);
+    }
+    .floating-side-theme:hover {
+      transform: scale(1.05);
+      border-color: var(--gold);
+      background: var(--bg-card-hover);
+    }
+    .theme-icon-indicator {
+      font-size: 16px;
+    }
+
+    /* ---------- PAGE CONTAINER ---------- */
+    .booking-page-wrap {
+      flex: 1;
+      padding: 120px 6vw 70px;
+      max-width: 1300px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      transition: transform 0.2s;
+    }
+    .page-back-link:hover {
+      transform: translateX(-4px);
+      color: var(--gold-bright);
+    }
+
+    .section-head {
+      margin-bottom: 40px;
+    }
+    .section-tagline {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 6vw, 68px);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      line-height: 0.95;
+      margin-bottom: 12px;
+    }
+    .section-description {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+    /* ---------- BOOKING & BUDGET COMMISSION DESK ---------- */
+    .commission-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 40px;
+      align-items: start;
+      box-shadow: var(--card-shadow);
+      width: 100%;
+    }
+    .control-step {
+      margin-bottom: 26px;
+    }
+    .step-label {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .selector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+    }
+    .select-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+    }
+    .select-card:hover {
+      border-color: var(--gold);
+    }
+    .select-card.active {
+      background: rgba(184, 114, 31, 0.14);
+      border-color: var(--gold);
+      box-shadow: 0 0 14px var(--gold-glow);
+    }
+    .select-card-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--text);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .select-card-sub {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--text-dim);
+      display: block;
+    }
+
+    /* Budget Range Selector */
+    .budget-options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    .budget-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .budget-pill:hover {
+      border-color: var(--gold);
+    }
+    .budget-pill.active {
+      background: rgba(184, 114, 31, 0.14);
+      border-color: var(--gold);
+      box-shadow: 0 0 14px var(--gold-glow);
+    }
+    .budget-tier-tag {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .budget-tier-amount {
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--text);
+    }
+    .budget-tier-approx {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    .project-notes-box {
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 85px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .project-notes-box:focus {
+      border-color: var(--gold);
+    }
+
+    /* Summary Live Ticket */
+    .summary-ticket {
+      background: var(--ticket-bg);
+      border: 1px solid var(--border-accent);
+      border-radius: 14px;
+      padding: 30px;
+      position: sticky;
+      top: 100px;
+      box-shadow: var(--card-shadow);
+    }
+    .ticket-header-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+    .ticket-header-sub {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 14px;
+    }
+    .ticket-spec-line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+    .ticket-key {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .ticket-val {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      text-align: right;
+    }
+    .ticket-val.highlight { color: var(--gold); }
+
+    .ticket-action-buttons {
+      border-top: 1px dashed var(--border);
+      padding-top: 20px;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Single Clean Email Action Button */
+    .btn-email-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+      color: #000;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 24px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 20px var(--gold-glow);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+    }
+    .btn-email-primary:hover {
+      box-shadow: 0 6px 28px var(--gold-glow);
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+    .btn-email-primary:active {
+      transform: translateY(0);
+    }
+
+    .direct-email-note {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.5;
+      padding-top: 4px;
+    }
+    .direct-email-note a {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      border-top: 1px solid var(--border);
+      padding: 60px 6vw 40px;
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+    }
+    .footer-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-heading {
+      font-family: var(--font-display);
+      font-size: 46px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .footer-subtitle {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .footer-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+    }
+    .footer-links-list a {
+      color: #9ca3af;
+      transition: color 0.2s;
+    }
+    .footer-links-list a:hover {
+      color: var(--gold);
+    }
+    .footer-base {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 24px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #6b7280;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ---------- COMPREHENSIVE RESPONSIVE STYLES ---------- */
+    .mobile-nav-controls {
+      display: none;
+    }
+    .mobile-drawer {
+      display: none;
+    }
+
+    @media (max-width: 880px) {
+      nav.desktop-nav {
+        display: none;
+      }
+      .mobile-nav-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .mobile-theme-btn {
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+      .mobile-menu-trigger {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        padding: 8px;
+        transition: all 0.2s ease;
+      }
+      .mobile-menu-trigger:hover {
+        border-color: var(--gold);
+      }
+      .mobile-menu-trigger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: all 0.25s ease;
+      }
+      .mobile-menu-trigger.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .mobile-menu-trigger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .mobile-menu-trigger.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* Mobile Drawer */
+      .mobile-drawer {
+        display: block;
+        position: fixed;
+        top: 66px;
+        left: 0;
+        right: 0;
+        background: var(--header-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+        z-index: 999;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+      }
+      .mobile-drawer.open {
+        max-height: 420px;
+        padding: 18px 5vw 22px;
+      }
+      .mobile-drawer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .mobile-nav-link {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text);
+        padding: 12px 16px;
+        border-radius: 8px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.2s;
+      }
+      .mobile-nav-link:hover, .mobile-nav-link:active {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+
+      /* Header & Page Layout */
+      header {
+        padding: 12px 5vw;
+      }
+      .status-pill {
+        display: none;
+      }
+      .booking-page-wrap {
+        padding: 95px 5vw 45px;
+      }
+      .commission-box {
+        grid-template-columns: 1fr;
+        padding: 22px 18px;
+        gap: 28px;
+      }
+      .summary-ticket {
+        position: static;
+        padding: 20px 18px;
+      }
+      .selector-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .budget-options-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .footer-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+      }
+      .footer-heading {
+        font-size: 36px;
+      }
+      .floating-side-theme {
+        right: 14px;
+        bottom: 16px;
+        padding: 8px 12px;
+        font-size: 11px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .selector-grid {
+        grid-template-columns: 1fr;
+      }
+      .budget-options-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="studio-glow-top"></div>
+
+  <!-- FLOATING SIDE THEME SWITCHER -->
+  <button class="floating-side-theme" id="sideThemeToggle" aria-label="Toggle theme">
+    <span class="theme-icon-indicator" id="sideThemeIcon">🌙</span>
+    <span id="sideThemeText">Dark Mode</span>
+  </button>
+
+  <!-- NAVIGATION -->
+  <header>
+    <div class="brand-wrap">
+      <a class="brand-logo" href="index.html">JAGADHEESH<span>.</span></a>
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        AVAILABLE FOR PROJECTS
+      </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#works">Music & Scores</a>
+      <a href="index.html#reviews">Reviews (30+)</a>
+      <a href="index.html#about">Studio</a>
+
+      <!-- Header Theme Toggle Button -->
+      <button class="theme-switch-btn" id="headerThemeToggle">
+        <span id="headerThemeIcon">🌙</span>
+        <span id="headerThemeText">Dark</span>
+      </button>
+
+      <a href="index.html" class="nav-btn-home">&larr; Back to Portfolio</a>
+    </nav>
+
+    <!-- Mobile Nav Controls -->
+    <div class="mobile-nav-controls">
+      <button class="theme-switch-btn mobile-theme-btn" id="mobileThemeToggle" aria-label="Toggle theme">
+        <span id="mobileThemeIcon">🌙</span>
+      </button>
+      <button class="mobile-menu-trigger" id="mobileMenuBtn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Dropdown Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-inner">
+      <div class="mobile-drawer-links">
+        <a class="mobile-nav-link" href="index.html">🏠 Home Portfolio</a>
+        <a class="mobile-nav-link" href="index.html#works">🎵 Music & Scores</a>
+        <a class="mobile-nav-link" href="index.html#reviews">⭐ Client Reviews (30+)</a>
+        <a class="mobile-nav-link" href="index.html#about">🎛️ Studio Benchmark</a>
+        <a class="mobile-nav-link" href="mailto:jagadheeshmusic@gmail.com">✉ Direct Email: jagadheeshmusic@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN BOOKING PAGE CONTENT -->
+  <main class="booking-page-wrap">
+    <a class="page-back-link" href="index.html">&larr; Back to Portfolio &amp; Music</a>
+
+    <div class="section-head">
+      <div class="section-tagline"><span>&bull;</span> Project Commission &amp; Inquiries</div>
+      <h1 class="section-heading">Book A Song / Project</h1>
+      <p class="section-description">Select your project scope, choose your budget range, and send your brief directly to Jagadheesh via email.</p>
+    </div>
+
+    <div class="commission-box">
+      <!-- Selector Controls -->
+      <div class="commission-left">
+        
+        <!-- Step 1: Project Type -->
+        <div class="control-step">
+          <div class="step-label">01 &mdash; Select Project Scope</div>
+          <div class="selector-grid" id="serviceOptions">
+            <div class="select-card active" data-service="Feature Film / OTT Score">
+              <span class="select-card-title">Film / OTT Score</span>
+              <span class="select-card-sub">Full BGM & themes</span>
+            </div>
+            <div class="select-card" data-service="Original Song / Single">
+              <span class="select-card-title">Original Song</span>
+              <span class="select-card-sub">Music & arrangement</span>
+            </div>
+            <div class="select-card" data-service="Web Series / Short Film">
+              <span class="select-card-title">Web Series / Short</span>
+              <span class="select-card-sub">Episode scoring</span>
+            </div>
+            <div class="select-card" data-service="Mixing & Mastering">
+              <span class="select-card-title">Mixing & Master</span>
+              <span class="select-card-sub">Stem mix to Dolby/master</span>
+            </div>
+            <div class="select-card" data-service="Commercial / Ad Jingle">
+              <span class="select-card-title">Ad / Jingle</span>
+              <span class="select-card-sub">Promo & brand audio</span>
+            </div>
+            <div class="select-card" data-service="DJ Mashup / Medley">
+              <span class="select-card-title">Mashup / Medley</span>
+              <span class="select-card-sub">Wedding & party edit</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Budget Tiers -->
+        <div class="control-step">
+          <div class="step-label">02 &mdash; Choose Your Budget Range</div>
+          <div class="budget-options-grid" id="budgetOptions">
+            <div class="budget-pill" data-budget="₹3,000 – ₹8,000 (~$40-$100)">
+              <div class="budget-tier-tag">Starter</div>
+              <div class="budget-tier-amount">₹3K &ndash; ₹8K</div>
+              <div class="budget-tier-approx">~$40 &ndash; $100</div>
+            </div>
+            <div class="budget-pill active" data-budget="₹8,000 – ₹20,000 (~$100-$250)">
+              <div class="budget-tier-tag">Standard</div>
+              <div class="budget-tier-amount">₹8K &ndash; ₹20K</div>
+              <div class="budget-tier-approx">~$100 &ndash; $250</div>
+            </div>
+            <div class="budget-pill" data-budget="₹20,000 – ₹45,000 (~$250-$550)">
+              <div class="budget-tier-tag">Pro Cinema</div>
+              <div class="budget-tier-amount">₹20K &ndash; ₹45K</div>
+              <div class="budget-tier-approx">~$250 &ndash; $550</div>
+            </div>
+            <div class="budget-pill" data-budget="Custom Scope / To Be Discussed">
+              <div class="budget-tier-tag">Custom</div>
+              <div class="budget-tier-amount">₹45K+</div>
+              <div class="budget-tier-approx">Scope dependent</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Turnaround -->
+        <div class="control-step">
+          <div class="step-label">03 &mdash; Desired Turnaround</div>
+          <div class="selector-grid" id="timelineOptions">
+            <div class="select-card" data-timeline="Express (24–72 Hours)">
+              <span class="select-card-title">Express Priority</span>
+              <span class="select-card-sub">24&ndash;72 Hours</span>
+            </div>
+            <div class="select-card active" data-timeline="Standard (1–2 Weeks)">
+              <span class="select-card-title">Standard Delivery</span>
+              <span class="select-card-sub">1&ndash;2 Weeks</span>
+            </div>
+            <div class="select-card" data-timeline="Flexible Schedule">
+              <span class="select-card-title">Flexible Schedule</span>
+              <span class="select-card-sub">Album / Long-term</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Notes -->
+        <div class="control-step" style="margin-bottom:0;">
+          <div class="step-label">04 &mdash; Project Notes / Reference Links (Optional)</div>
+          <textarea class="project-notes-box" id="briefNotes" placeholder="Share reference track links, scene descriptions, mood, deadline, or instrument preferences..."></textarea>
+        </div>
+
+      </div>
+
+      <!-- Live Summary Ticket -->
+      <div class="summary-ticket">
+        <div class="ticket-header-title">Booking Ticket</div>
+        <div class="ticket-header-sub">Direct Project Commission</div>
+
+        <div class="ticket-spec-line">
+          <span class="ticket-key">Service</span>
+          <span class="ticket-val highlight" id="ticketService">Film / OTT Score</span>
+        </div>
+        <div class="ticket-spec-line">
+          <span class="ticket-key">Budget Bracket</span>
+          <span class="ticket-val highlight" id="ticketBudget">₹8,000 &ndash; ₹20,000</span>
+        </div>
+        <div class="ticket-spec-line">
+          <span class="ticket-key">Turnaround</span>
+          <span class="ticket-val" id="ticketTimeline">Standard (1&ndash;2 Weeks)</span>
+        </div>
+        <div class="ticket-spec-line">
+          <span class="ticket-key">Producer</span>
+          <span class="ticket-val">Jagadheesh</span>
+        </div>
+        <div class="ticket-spec-line">
+          <span class="ticket-key">Revisions</span>
+          <span class="ticket-val">Included until approved</span>
+        </div>
+
+        <div class="ticket-action-buttons">
+          <!-- 1 Clean Universal Button: Opens Mobile Mail app on phones, or Gmail in browser on PC/Mac -->
+          <button class="btn-email-primary" id="mainSendBtn" type="button">
+            <span>✉ Email Project Brief &rarr;</span>
+          </button>
+
+          <div class="direct-email-note">
+            Direct Email:<br>
+            <a href="mailto:jagadheeshmusic@gmail.com"><strong>jagadheeshmusic@gmail.com</strong></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wrapper">
+      <div>
+        <div class="footer-heading">JAGADHEESH</div>
+        <div class="footer-subtitle">Music Producer &bull; Film Composer &bull; Audio Engineer</div>
+      </div>
+
+      <div class="footer-links-list">
+        <a href="index.html">Home &mdash; Portfolio &rarr;</a>
+        <a href="https://www.instagram.com/jagadheeshmusic/" target="_blank" rel="noopener">Instagram &mdash; @jagadheeshmusic &rarr;</a>
+        <a href="https://www.freelancer.com/u/jagadheeshB" target="_blank" rel="noopener">Freelancer &mdash; jagadheeshB &rarr;</a>
+        <a href="mailto:jagadheeshmusic@gmail.com">Email &mdash; jagadheeshmusic@gmail.com &rarr;</a>
+      </div>
+    </div>
+
+    <div class="footer-base">
+      <span>&copy; 2026 Jagadheesh &bull; All Rights Reserved</span>
+      <span>Puducherry, India</span>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // --- THEME SWITCH LOGIC (ALWAYS SYNCED WITH MAIN SITE) ---
+    const htmlElement = document.documentElement;
+    const sideThemeToggle = document.getElementById('sideThemeToggle');
+    const sideThemeIcon = document.getElementById('sideThemeIcon');
+    const sideThemeText = document.getElementById('sideThemeText');
+    const headerThemeToggle = document.getElementById('headerThemeToggle');
+    const headerThemeIcon = document.getElementById('headerThemeIcon');
+    const headerThemeText = document.getElementById('headerThemeText');
+
+    let currentTheme = localStorage.getItem('jagadheesh_theme') || 'light';
+
+    function applyTheme(theme) {
+      htmlElement.setAttribute('data-theme', theme);
+      localStorage.setItem('jagadheesh_theme', theme);
+
+      if (theme === 'dark') {
+        sideThemeIcon.textContent = '☀️';
+        sideThemeText.textContent = 'Light Mode';
+        headerThemeIcon.textContent = '☀️';
+        headerThemeText.textContent = 'Light';
+      } else {
+        sideThemeIcon.textContent = '🌙';
+        sideThemeText.textContent = 'Dark Mode';
+        headerThemeIcon.textContent = '🌙';
+        headerThemeText.textContent = 'Dark';
+      }
+
+      const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+      if (mobileThemeIcon) {
+        mobileThemeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      }
+    }
+
+    function toggleTheme() {
+      const nextTheme = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+    }
+
+    sideThemeToggle.addEventListener('click', toggleTheme);
+    headerThemeToggle.addEventListener('click', toggleTheme);
+    
+    const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+    if (mobileThemeToggle) {
+      mobileThemeToggle.addEventListener('click', toggleTheme);
+    }
+
+    // --- MOBILE DRAWER NAVIGATION MENU ---
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileMenuBtn && mobileDrawer) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isOpen = mobileDrawer.classList.toggle('open');
+        mobileMenuBtn.classList.toggle('active', isOpen);
+      });
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.remove('open');
+          mobileMenuBtn.classList.remove('active');
+        });
+      });
+    }
+
+    // Initialize theme
+    applyTheme(currentTheme);
+
+    // --- DEVICE DETECTION (MOBILE vs PC/MAC) ---
+    function isMobileClient() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+      const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i;
+      const isIPad = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+      const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+      const isSmallScreen = window.innerWidth <= 820;
+      return mobileRegex.test(ua) || isIPad || (hasTouch && isSmallScreen);
+    }
+
+    // --- BOOKING STATE & ESTIMATOR ---
+    const bookingSpec = {
+      service: 'Feature Film / OTT Score',
+      budget: '₹8,000 – ₹20,000 (~$100-$250)',
+      timeline: 'Standard (1–2 Weeks)'
+    };
+
+    const ticketService = document.getElementById('ticketService');
+    const ticketBudget = document.getElementById('ticketBudget');
+    const ticketTimeline = document.getElementById('ticketTimeline');
+    const briefNotes = document.getElementById('briefNotes');
+    const mainSendBtn = document.getElementById('mainSendBtn');
+
+    function syncTicket() {
+      ticketService.textContent = bookingSpec.service;
+      ticketBudget.textContent = bookingSpec.budget.split('(')[0].trim();
+      ticketTimeline.textContent = bookingSpec.timeline;
+    }
+
+    // Single Smart Send Button Action:
+    // Mobile -> Native Mail/Gmail App | PC/Mac -> Gmail in Web Browser
+    if (mainSendBtn) {
+      mainSendBtn.addEventListener('click', () => {
+        const notes = briefNotes.value.trim();
+        const subject = `Music Project Booking Inquiry — ${bookingSpec.service}`;
+        const message = `Hello Jagadheesh,\n\n` +
+                        `I would like to inquire about booking a project with you:\n\n` +
+                        `• Project Scope: ${bookingSpec.service}\n` +
+                        `• Budget Bracket: ${bookingSpec.budget}\n` +
+                        `• Turnaround: ${bookingSpec.timeline}\n` +
+                        (notes ? `• Project Details / References:\n  ${notes}\n\n` : '\n') +
+                        `Please let me know your availability and next steps.\n\nThank you!`;
+
+        const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=jagadheeshmusic@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+        const mailtoUrl = `mailto:jagadheeshmusic@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+        if (isMobileClient()) {
+          // If on mobile (Android/iOS): Redirects to the native mail app
+          window.location.href = mailtoUrl;
+        } else {
+          // If on PC or Mac: Opens Gmail directly in the web browser
+          window.open(gmailWebUrl, '_blank');
+        }
+      });
+    }
+
+    // Service selection
+    document.querySelectorAll('#serviceOptions .select-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('#serviceOptions .select-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        bookingSpec.service = card.dataset.service;
+        syncTicket();
+      });
+    });
+
+    // Budget selection
+    document.querySelectorAll('#budgetOptions .budget-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('#budgetOptions .budget-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        bookingSpec.budget = pill.dataset.budget;
+        syncTicket();
+      });
+    });
+
+    // Timeline selection
+    document.querySelectorAll('#timelineOptions .select-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('#timelineOptions .select-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        bookingSpec.timeline = card.dataset.timeline;
+        syncTicket();
+      });
+    });
+
+    briefNotes.addEventListener('input', syncTicket);
+    syncTicket();
+  </script>
+</body>
+</html>
