@@ -7,6 +7,7 @@ Allow: /images/
 Allow: /book.html
 Allow: /favicon.svg
 Allow: /puthu-ulagam.jpg
+Allow: /google052046efc90a2420.html
 
 # Search Engine Crawlers
 User-agent: Googlebot
