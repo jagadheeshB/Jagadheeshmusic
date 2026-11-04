@@ -1180,6 +1180,24 @@
       font-family: var(--font-mono);
       font-size: 11.5px;
       color: var(--text-dim);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+    }
+    .client-flag {
+      width: 16px;
+      height: 12px;
+      border-radius: 2px;
+      object-fit: cover;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      flex-shrink: 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    [data-theme="dark"] .client-flag {
+      border-color: rgba(255, 255, 255, 0.22);
     }
     .star-rating-pill {
       font-family: var(--font-mono);
@@ -1726,7 +1744,7 @@
 
   <!-- FLOATING SIDE THEME SWITCHER -->
   <button class="floating-side-theme" id="sideThemeToggle" aria-label="Toggle theme">
-    <span class="theme-icon-indicator" id="sideThemeIcon">ðŸŒ™</span>
+    <span class="theme-icon-indicator" id="sideThemeIcon"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="vertical-align:middle;display:inline-block;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
     <span id="sideThemeText">Dark Mode</span>
   </button>
 
@@ -1749,7 +1767,7 @@
 
       <!-- Header Theme Toggle Button -->
       <button class="theme-switch-btn" id="headerThemeToggle">
-        <span id="headerThemeIcon">ðŸŒ™</span>
+        <span id="headerThemeIcon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="vertical-align:middle;display:inline-block;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
         <span id="headerThemeText">Dark</span>
       </button>
 
@@ -1759,7 +1777,7 @@
     <!-- Mobile Nav Controls -->
     <div class="mobile-nav-controls">
       <button class="theme-switch-btn mobile-theme-btn" id="mobileThemeToggle" aria-label="Toggle theme">
-        <span id="mobileThemeIcon">ðŸŒ™</span>
+        <span id="mobileThemeIcon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="vertical-align:middle;display:inline-block;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
       </button>
       <button class="mobile-menu-trigger" id="mobileMenuBtn" aria-label="Open menu">
         <span></span>
@@ -1773,10 +1791,10 @@
   <div class="mobile-drawer" id="mobileDrawer">
     <div class="mobile-drawer-inner">
       <div class="mobile-drawer-links">
-        <a class="mobile-nav-link" href="#works">ðŸŽµ Music & Scores</a>
-        <a class="mobile-nav-link" href="book.html">âš¡ Book A Song / Project</a>
-        <a class="mobile-nav-link" href="#reviews">â­ Client Reviews (30+)</a>
-        <a class="mobile-nav-link" href="#about">ðŸŽ›ï¸ Studio Benchmark</a>
+        <a class="mobile-nav-link" href="#works">Music &amp; Scores</a>
+        <a class="mobile-nav-link" href="book.html">&plus; Book A Song / Project</a>
+        <a class="mobile-nav-link" href="#reviews">&#9733; Client Reviews (30+)</a>
+        <a class="mobile-nav-link" href="#about">Studio Benchmark</a>
         <a class="mobile-nav-link mobile-book-cta" href="book.html">&plus; Book A Song / Project</a>
       </div>
     </div>
@@ -1836,7 +1854,7 @@
         </div>
         
         <div class="floating-star-chip">
-          <div class="chip-star-score">5.0â˜…</div>
+          <div class="chip-star-score">5.0&#9733;</div>
           <div class="chip-star-text">
             30+ Verified<br>Client Reviews
           </div>
@@ -2120,7 +2138,7 @@
               <div class="client-initial-badge">R</div>
               <div>
                 <div class="client-title-name">Ruby</div>
-                <div class="client-geo-pill">United States &bull; ðŸ‡ºðŸ‡¸</div>
+                <div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/us.png" alt="US" width="16" height="12"> United States</div>
               </div>
             </div>
             <div class="star-rating-pill">5.0 &starf;</div>
@@ -2139,7 +2157,7 @@
               <div class="client-initial-badge">G</div>
               <div>
                 <div class="client-title-name">Gunjan</div>
-                <div class="client-geo-pill">India &bull; ðŸ‡®ðŸ‡³</div>
+                <div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/in.png" alt="IN" width="16" height="12"> India</div>
               </div>
             </div>
             <div class="star-rating-pill">5.0 &starf;</div>
@@ -2158,7 +2176,7 @@
               <div class="client-initial-badge">J</div>
               <div>
                 <div class="client-title-name">Jack</div>
-                <div class="client-geo-pill">United Kingdom &bull; ðŸ‡¬ðŸ‡§</div>
+                <div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/gb.png" alt="GB" width="16" height="12"> United Kingdom</div>
               </div>
             </div>
             <div class="star-rating-pill">4.8 &starf;</div>
@@ -2177,7 +2195,7 @@
               <div class="client-initial-badge">M</div>
               <div>
                 <div class="client-title-name">Manoj</div>
-                <div class="client-geo-pill">India &bull; ðŸ‡®ðŸ‡³</div>
+                <div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/in.png" alt="IN" width="16" height="12"> India</div>
               </div>
             </div>
             <div class="star-rating-pill">5.0 &starf;</div>
@@ -2196,7 +2214,7 @@
               <div class="client-initial-badge">J</div>
               <div>
                 <div class="client-title-name">Joshua</div>
-                <div class="client-geo-pill">United States &bull; ðŸ‡ºðŸ‡¸</div>
+                <div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/us.png" alt="US" width="16" height="12"> United States</div>
               </div>
             </div>
             <div class="star-rating-pill">5.0 &starf;</div>
@@ -2215,7 +2233,7 @@
               <div class="client-initial-badge">D</div>
               <div>
                 <div class="client-title-name">Dennis</div>
-                <div class="client-geo-pill">Netherlands &bull; ðŸ‡³ðŸ‡±</div>
+                <div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/nl.png" alt="NL" width="16" height="12"> Netherlands</div>
               </div>
             </div>
             <div class="star-rating-pill">4.2 &starf;</div>
@@ -2230,7 +2248,7 @@
       <div class="review-item-card extra-card" data-review-id="22212569" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">G</div><div><div class="client-title-name">Gauri</div><div class="client-geo-pill">Australia &bull; ðŸ‡¦ðŸ‡º</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">G</div><div><div class="client-title-name">Gauri</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/au.png" alt="AU" width="16" height="12"> Australia</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Bollywood Mashup Mixing</div>
@@ -2242,7 +2260,7 @@
       <div class="review-item-card extra-card" data-review-id="22128838" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">D</div><div><div class="client-title-name">Dharnish</div><div class="client-geo-pill">United Kingdom &bull; ðŸ‡¬ðŸ‡§</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">D</div><div><div class="client-title-name">Dharnish</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/gb.png" alt="GB" width="16" height="12"> United Kingdom</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Old-School Hip-Hop Production</div>
@@ -2254,7 +2272,7 @@
       <div class="review-item-card extra-card" data-review-id="22120591" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">M</div><div><div class="client-title-name">Max</div><div class="client-geo-pill">Germany &bull; ðŸ‡©ðŸ‡ª</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">M</div><div><div class="client-title-name">Max</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/de.png" alt="DE" width="16" height="12"> Germany</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Wedding Dance Song Mashup</div>
@@ -2266,7 +2284,7 @@
       <div class="review-item-card extra-card" data-review-id="22079292" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">J</div><div><div class="client-title-name">Jenny</div><div class="client-geo-pill">United Kingdom &bull; ðŸ‡¬ðŸ‡§</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">J</div><div><div class="client-title-name">Jenny</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/gb.png" alt="GB" width="16" height="12"> United Kingdom</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Rock Song Mash-Up</div>
@@ -2278,7 +2296,7 @@
       <div class="review-item-card extra-card" data-review-id="22062056" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">J</div><div><div class="client-title-name">Jesper</div><div class="client-geo-pill">Denmark &bull; ðŸ‡©ðŸ‡°</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">J</div><div><div class="client-title-name">Jesper</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/dk.png" alt="DK" width="16" height="12"> Denmark</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Custom Love-Themed Song Medley</div>
@@ -2290,7 +2308,7 @@
       <div class="review-item-card extra-card" data-review-id="22024100" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">V</div><div><div class="client-title-name">Vidhya Sagar</div><div class="client-geo-pill">Switzerland &bull; ðŸ‡¨ðŸ‡­</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">V</div><div><div class="client-title-name">Vidhya Sagar</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/ch.png" alt="CH" width="16" height="12"> Switzerland</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Electronic Groovy Focus Music Composer</div>
@@ -2302,7 +2320,7 @@
       <div class="review-item-card extra-card" data-review-id="21915462" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">M</div><div><div class="client-title-name">Mohamad Farouk</div><div class="client-geo-pill">Turkey &bull; ðŸ‡¹ðŸ‡·</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">M</div><div><div class="client-title-name">Mohamad Farouk</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/tr.png" alt="TR" width="16" height="12"> Turkey</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Podcast Audio Noise Removal</div>
@@ -2314,7 +2332,7 @@
       <div class="review-item-card extra-card" data-review-id="21845618" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">J</div><div><div class="client-title-name">Jiswin</div><div class="client-geo-pill">India &bull; ðŸ‡®ðŸ‡³</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">J</div><div><div class="client-title-name">Jiswin</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/in.png" alt="IN" width="16" height="12"> India</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Malayalam Unplugged Cover Track</div>
@@ -2326,7 +2344,7 @@
       <div class="review-item-card extra-card" data-review-id="21834975" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">A</div><div><div class="client-title-name">Ayesha</div><div class="client-geo-pill">India &bull; ðŸ‡®ðŸ‡³</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">A</div><div><div class="client-title-name">Ayesha</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/in.png" alt="IN" width="16" height="12"> India</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Compose Savage Pop YouTube Track</div>
@@ -2338,7 +2356,7 @@
       <div class="review-item-card extra-card" data-review-id="21774640" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">N</div><div><div class="client-title-name">Neha</div><div class="client-geo-pill">India &bull; ðŸ‡®ðŸ‡³</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">N</div><div><div class="client-title-name">Neha</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/in.png" alt="IN" width="16" height="12"> India</div></div></div>
             <div class="star-rating-pill">4.6 &starf;</div>
           </div>
           <div class="project-name-chip">30-Minute Wedding Sangeet Mix</div>
@@ -2350,7 +2368,7 @@
       <div class="review-item-card extra-card" data-review-id="21762278" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">I</div><div><div class="client-title-name">Iqra</div><div class="client-geo-pill">United States &bull; ðŸ‡ºðŸ‡¸</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">I</div><div><div class="client-title-name">Iqra</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/us.png" alt="US" width="16" height="12"> United States</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Wedding Dance Mashups</div>
@@ -2362,7 +2380,7 @@
       <div class="review-item-card extra-card" data-review-id="21736025" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">A</div><div><div class="client-title-name">Ari</div><div class="client-geo-pill">United States &bull; ðŸ‡ºðŸ‡¸</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">A</div><div><div class="client-title-name">Ari</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/us.png" alt="US" width="16" height="12"> United States</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Put melody to sheet music</div>
@@ -2374,7 +2392,7 @@
       <div class="review-item-card extra-card" data-review-id="21733822" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">V</div><div><div class="client-title-name">Vinay</div><div class="client-geo-pill">Australia &bull; ðŸ‡¦ðŸ‡º</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">V</div><div><div class="client-title-name">Vinay</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/au.png" alt="AU" width="16" height="12"> Australia</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Indian Party Songs DJ Mix</div>
@@ -2386,7 +2404,7 @@
       <div class="review-item-card extra-card" data-review-id="22136985" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">M</div><div><div class="client-title-name">Manoj</div><div class="client-geo-pill">India &bull; ðŸ‡®ðŸ‡³</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">M</div><div><div class="client-title-name">Manoj</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/in.png" alt="IN" width="16" height="12"> India</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Classical Composition Needed</div>
@@ -2398,7 +2416,7 @@
       <div class="review-item-card extra-card" data-review-id="21848625" style="display:none;">
         <div>
           <div class="review-top-row">
-            <div class="client-avatar-combo"><div class="client-initial-badge">A</div><div><div class="client-title-name">Avinash</div><div class="client-geo-pill">India &bull; ðŸ‡®ðŸ‡³</div></div></div>
+            <div class="client-avatar-combo"><div class="client-initial-badge">A</div><div><div class="client-title-name">Avinash</div><div class="client-geo-pill"><img class="client-flag" src="https://flagcdn.com/24x18/in.png" alt="IN" width="16" height="12"> India</div></div></div>
             <div class="star-rating-pill">5.0 &starf;</div>
           </div>
           <div class="project-name-chip">Jython Akai Melodic Performance</div>
@@ -2429,7 +2447,7 @@
       </div>
       <div class="spec-card-stat">
         <div class="spec-stat-num">30+</div>
-        <div class="spec-stat-lbl">5â˜… Client Reviews</div>
+        <div class="spec-stat-lbl">5&#9733; Client Reviews</div>
       </div>
       <div class="spec-card-stat">
         <div class="spec-stat-num">8+</div>
@@ -2478,25 +2496,27 @@
     // Always start with light mode on first open
     let currentTheme = localStorage.getItem('jagadheesh_theme') || 'light';
 
+    const MOON_SVG = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="vertical-align:middle;display:inline-block;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+    const SUN_SVG = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;display:inline-block;"><circle cx="12" cy="12" r="5" fill="currentColor"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
     function applyTheme(theme) {
       htmlElement.setAttribute('data-theme', theme);
       localStorage.setItem('jagadheesh_theme', theme);
 
       if (theme === 'dark') {
-        sideThemeIcon.textContent = 'â˜€ï¸';
+        sideThemeIcon.innerHTML = SUN_SVG;
         sideThemeText.textContent = 'Light Mode';
-        headerThemeIcon.textContent = 'â˜€ï¸';
+        headerThemeIcon.innerHTML = SUN_SVG;
         headerThemeText.textContent = 'Light';
       } else {
-        sideThemeIcon.textContent = 'ðŸŒ™';
+        sideThemeIcon.innerHTML = MOON_SVG;
         sideThemeText.textContent = 'Dark Mode';
-        headerThemeIcon.textContent = 'ðŸŒ™';
+        headerThemeIcon.innerHTML = MOON_SVG;
         headerThemeText.textContent = 'Dark';
       }
 
       const mobileThemeIcon = document.getElementById('mobileThemeIcon');
       if (mobileThemeIcon) {
-        mobileThemeIcon.textContent = theme === 'dark' ? 'â˜€ï¸' : 'ðŸŒ™';
+        mobileThemeIcon.innerHTML = theme === 'dark' ? SUN_SVG : MOON_SVG;
       }
     }
 
@@ -2543,7 +2563,7 @@
       extraCards.forEach(card => {
         card.style.display = isExpanded ? 'flex' : 'none';
       });
-      reviewsToggleBtn.textContent = isExpanded ? 'Show Less â†‘' : 'Show All Reviews â†“';
+      reviewsToggleBtn.innerHTML = isExpanded ? 'Show Less &uarr;' : 'Show All Reviews &darr;';
     });
 
     // --- AUTOMATIC REAL-TIME FREELANCER REVIEWS SYNC (STRICT ZERO DUPLICATES) ---
@@ -2553,13 +2573,13 @@
       const reviewsWall = document.getElementById('reviewsWall');
       const bannerMeta = document.querySelector('.banner-meta-txt strong');
 
-      const countryFlags = {
-        'India': 'ðŸ‡®ðŸ‡³', 'United States': 'ðŸ‡ºðŸ‡¸', 'United Kingdom': 'ðŸ‡¬ðŸ‡§',
-        'Australia': 'ðŸ‡¦ðŸ‡º', 'Germany': 'ðŸ‡©ðŸ‡ª', 'Denmark': 'ðŸ‡©ðŸ‡°',
-        'Switzerland': 'ðŸ‡¨ðŸ‡­', 'Netherlands': 'ðŸ‡³ðŸ‡±', 'Turkey': 'ðŸ‡¹ðŸ‡·',
-        'Canada': 'ðŸ‡¨ðŸ‡¦', 'France': 'ðŸ‡«ðŸ‡·', 'Spain': 'ðŸ‡ªðŸ‡¸', 'Italy': 'ðŸ‡®ðŸ‡¹',
-        'United Arab Emirates': 'ðŸ‡¦ðŸ‡ª', 'Singapore': 'ðŸ‡¸ðŸ‡¬', 'Malaysia': 'ðŸ‡²ðŸ‡¾',
-        'New Zealand': 'ðŸ‡³ðŸ‡¿', 'Ireland': 'ðŸ‡®ðŸ‡ª', 'Sweden': 'ðŸ‡¸ðŸ‡ª', 'Norway': 'ðŸ‡³ðŸ‡´'
+      const countryCodes = {
+        'India': 'in', 'United States': 'us', 'United Kingdom': 'gb',
+        'Australia': 'au', 'Germany': 'de', 'Denmark': 'dk',
+        'Switzerland': 'ch', 'Netherlands': 'nl', 'Turkey': 'tr',
+        'Canada': 'ca', 'France': 'fr', 'Spain': 'es', 'Italy': 'it',
+        'United Arab Emirates': 'ae', 'Singapore': 'sg', 'Malaysia': 'my',
+        'New Zealand': 'nz', 'Ireland': 'ie', 'Sweden': 'se', 'Norway': 'no'
       };
 
       try {
@@ -2601,7 +2621,8 @@
           const u = usersMap[r.from_user_id] || {};
           const clientName = u.public_name || u.username || 'Client';
           const countryName = u.location?.country?.name || '';
-          const flag = countryFlags[countryName] || '';
+          const cCode = countryCodes[countryName] || '';
+          const flagImg = cCode ? `<img class="client-flag" src="https://flagcdn.com/24x18/${cCode}.png" alt="${cCode.toUpperCase()}" width="16" height="12"> ` : '';
           const projectTitle = r.review_context?.context_name || 'Audio Project';
           const ratingStr = Number(r.rating).toFixed(1);
           const initial = clientName.charAt(0).toUpperCase();
@@ -2616,7 +2637,7 @@
                   <div class="client-initial-badge">${initial}</div>
                   <div>
                     <div class="client-title-name">${escapeHtml(clientName)} <span style="font-size:9.5px; color:var(--gold); border:1px solid var(--border-accent); border-radius:3px; padding:1px 5px; margin-left:4px; font-family:var(--font-mono); font-weight:700;">NEW</span></div>
-                    <div class="client-geo-pill">${escapeHtml(countryName)} ${flag ? '&bull; ' + flag : ''}</div>
+                    <div class="client-geo-pill">${flagImg}${escapeHtml(countryName)}</div>
                   </div>
                 </div>
                 <div class="star-rating-pill">${ratingStr} &starf;</div>
@@ -2636,7 +2657,7 @@
           bannerMeta.textContent = `${totalCount >= 30 ? totalCount : '30'}+ verified global projects`;
         }
         if (reviewsToggleBtn && !isExpanded) {
-          reviewsToggleBtn.textContent = 'Show All Reviews â†“';
+          reviewsToggleBtn.innerHTML = 'Show All Reviews &darr;';
         }
       } catch (err) {
         console.log('Freelancer live sync:', err);
