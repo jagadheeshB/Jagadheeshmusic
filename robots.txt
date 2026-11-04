@@ -1,4 +1,23 @@
+# robots.txt for Jagadheesh Official Portfolio
+# https://jagadheeshb.github.io/Jagadheeshmusic/
+
 User-agent: *
 Allow: /
+Allow: /images/
+Allow: /book.html
+Allow: /favicon.svg
+Allow: /puthu-ulagam.jpg
 
-Sitemap: https://jagadheeshmusic.com/sitemap.xml
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /puthu-ulagam.jpg
+
+User-agent: Bingbot
+Allow: /
+
+# Canonical XML Sitemap
+Sitemap: https://jagadheeshb.github.io/Jagadheeshmusic/sitemap.xml

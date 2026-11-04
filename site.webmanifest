@@ -1,0 +1,21 @@
+{
+  "name": "Jagadheesh - Music Producer & Film Composer",
+  "short_name": "Jagadheesh",
+  "description": "Official portfolio of Indian film composer, music producer & audio engineer Jagadheesh based in Puducherry, India.",
+  "start_url": "/Jagadheeshmusic/",
+  "display": "standalone",
+  "background_color": "#0b0c10",
+  "theme_color": "#b8721f",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "images/hero.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
